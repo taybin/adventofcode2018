@@ -9,20 +9,17 @@ area = []
 for line in lines:
     area.append(list(line)[:-1])
 
-class Cart:
-    cart_id = 0
 
+class Cart:
     def __init__(self, x, y, direction):
         print('new Cart', x, y, direction)
-        self.id = cart_id
-        cart_id += 1
         self.x = x
         self.y = y
         self.direction = direction
         self.choice = 'left'
 
     def __repr__(self):
-        return repr((self.id, self.x, self.y, self.direction))
+        return repr((self.x, self.y, self.direction))
 
     def position(self):
         return (self.x, self.y)
@@ -36,7 +33,6 @@ class Cart:
             self.corner1()
         elif current == '\\':
             self.corner2()
-
 
     def move(self):
         if self.direction == 'v':
@@ -92,6 +88,7 @@ class Cart:
             self.choice = 'left'
         print('new choice/direction', self.choice, self.direction)
 
+
 carts = []
 
 for y in range(len(area)):
@@ -104,6 +101,7 @@ for y in range(len(area)):
             elif c == '^' or c == 'v':
                 area[y][x] = '|'
 
+
 def display():
     new_area = copy.deepcopy(area)
     for c in carts:
@@ -112,7 +110,8 @@ def display():
         print(''.join(y))
     print('')
 
-#display()
+
+# display()
 positions = set()
 i = 0
 while True:
